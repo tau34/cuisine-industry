@@ -167,14 +167,14 @@ onEvent("item.registry", (event) => {
         return result;
     }
 
-    function proc(id, name, vol) {
+    function proc(id, mod, name, vol) {
         var i = 1;
         event
             .create(`cpd${i}_${id}`)
             .displayName(`${CU_LIST[i]}倍圧縮${name}`)
             .tooltip(`CU: ${CU_LIST[i] * vol}`)
             .tooltip(`Tier: ${i} (${TIER_LIST[i]})`)
-            .texture("farmersdelight:item/" + id)
+            .texture(mod + ":item/" + id)
             .color((s) => tint(1));
         i++;
         event
@@ -182,7 +182,7 @@ onEvent("item.registry", (event) => {
             .displayName(`${CU_LIST[i]}倍圧縮${name}`)
             .tooltip(`CU: ${CU_LIST[i] * vol}`)
             .tooltip(`Tier: ${i} (${TIER_LIST[i]})`)
-            .texture("farmersdelight:item/" + id)
+            .texture(mod + ":item/" + id)
             .color((s) => tint(2));
         i++;
         event
@@ -190,7 +190,7 @@ onEvent("item.registry", (event) => {
             .displayName(`${CU_LIST[i]}倍圧縮${name}`)
             .tooltip(`CU: ${CU_LIST[i] * vol}`)
             .tooltip(`Tier: ${i} (${TIER_LIST[i]})`)
-            .texture("farmersdelight:item/" + id)
+            .texture(mod + ":item/" + id)
             .color((s) => tint(3));
         i++;
         event
@@ -198,7 +198,7 @@ onEvent("item.registry", (event) => {
             .displayName(`${CU_LIST[i]}倍圧縮${name}`)
             .tooltip(`CU: ${CU_LIST[i] * vol}`)
             .tooltip(`Tier: ${i} (${TIER_LIST[i]})`)
-            .texture("farmersdelight:item/" + id)
+            .texture(mod + ":item/" + id)
             .color((s) => tint(4));
         i++;
         event
@@ -206,7 +206,7 @@ onEvent("item.registry", (event) => {
             .displayName(`${CU_LIST[i]}倍圧縮${name}`)
             .tooltip(`CU: ${CU_LIST[i] * vol}`)
             .tooltip(`Tier: ${i} (${TIER_LIST[i]})`)
-            .texture("farmersdelight:item/" + id)
+            .texture(mod + ":item/" + id)
             .color((s) => tint(5));
         i++;
         event
@@ -214,7 +214,7 @@ onEvent("item.registry", (event) => {
             .displayName(`${CU_LIST[i]}倍圧縮${name}`)
             .tooltip(`CU: ${CU_LIST[i] * vol}`)
             .tooltip(`Tier: ${i} (${TIER_LIST[i]})`)
-            .texture("farmersdelight:item/" + id)
+            .texture(mod + ":item/" + id)
             .color((s) => tint(6));
         i++;
         event
@@ -222,7 +222,7 @@ onEvent("item.registry", (event) => {
             .displayName(`${CU_LIST[i]}倍圧縮${name}`)
             .tooltip(`CU: ${CU_LIST[i] * vol}`)
             .tooltip(`Tier: ${i} (${TIER_LIST[i]})`)
-            .texture("farmersdelight:item/" + id)
+            .texture(mod + ":item/" + id)
             .color((s) => tint(7));
         i++;
         event
@@ -230,7 +230,7 @@ onEvent("item.registry", (event) => {
             .displayName(`${CU_LIST[i]}倍圧縮${name}`)
             .tooltip(`CU: ${CU_LIST[i] * vol}`)
             .tooltip(`Tier: ${i} (${TIER_LIST[i]})`)
-            .texture("farmersdelight:item/" + id)
+            .texture(mod + ":item/" + id)
             .color((s) => tint(8));
         i++;
         event
@@ -238,86 +238,197 @@ onEvent("item.registry", (event) => {
             .displayName(`${CU_LIST[i]}倍圧縮${name}`)
             .tooltip(`CU: ${CU_LIST[i] * vol}`)
             .tooltip(`Tier: ${i} (${TIER_LIST[i]})`)
-            .texture("farmersdelight:item/" + id)
+            .texture(mod + ":item/" + id)
             .color((s) => tint(9));
     }
 
-    proc("cabbage", "キャベツ", 3);
-    proc("tomato", "トマト", 2);
-    proc("onion", "タマネギ", 3);
-    proc("fried_egg", "目玉焼き", 7);
-    proc("tomato_sauce", "トマトソース", 7);
-    proc("pumpkin_slice", "カボチャの薄切り", 4);
-    proc("cabbage_leaf", "キャベツの葉", 2);
-    proc("minced_beef", "牛ひき肉", 2);
-    proc("beef_patty", "ビーフパティ", 11);
-    proc("cooked_chicken_cuts", "カットした焼き鳥", 6);
-    proc("bacon", "生のベーコン", 2);
-    proc("cooked_bacon", "焼きベーコン", 11);
-    proc("cod_slice", "鱈の切り身", 2);
-    proc("cooked_cod_slice", "焼き鱈の切り身", 6);
-    proc("salmon_slice", "鮭の切り身", 2);
-    proc("cooked_salmon_slice", "焼き鮭の切り身", 8);
-    proc("mutton_chops", "生のラムチョップ", 2);
-    proc("cooked_mutton_chops", "焼きラムチョップ", 8);
-    proc("ham", "ハム", 8);
-    proc("smoked_ham", "ハムの燻製", 26);
-    proc("pie_crust", "パイ生地", 3);
-    proc("cake_slice", "カットケーキ", 3);
-    proc("apple_pie_slice", "切り分けたアップルパイ", 4);
-    proc(
+    function fProc(id, name, vol) {
+        proc(id, "farmersdelight", name, vol);
+    }
+
+    function mProc(id, name, vol) {
+        proc(id, "minecraft", name, vol);
+    }
+
+    function pNoCU(id, mod, name) {
+        var i = 1;
+        event
+            .create(`cpd${i}_${id}`)
+            .displayName(`${CU_LIST[i]}倍圧縮${name}`)
+            .tooltip(`Tier: ${i} (${TIER_LIST[i]})`)
+            .texture(mod + ":item/" + id)
+            .color((s) => tint(1));
+        i++;
+        event
+            .create(`cpd${i}_${id}`)
+            .displayName(`${CU_LIST[i]}倍圧縮${name}`)
+            .tooltip(`Tier: ${i} (${TIER_LIST[i]})`)
+            .texture(mod + ":item/" + id)
+            .color((s) => tint(2));
+        i++;
+        event
+            .create(`cpd${i}_${id}`)
+            .displayName(`${CU_LIST[i]}倍圧縮${name}`)
+            .tooltip(`Tier: ${i} (${TIER_LIST[i]})`)
+            .texture(mod + ":item/" + id)
+            .color((s) => tint(3));
+        i++;
+        event
+            .create(`cpd${i}_${id}`)
+            .displayName(`${CU_LIST[i]}倍圧縮${name}`)
+            .tooltip(`Tier: ${i} (${TIER_LIST[i]})`)
+            .texture(mod + ":item/" + id)
+            .color((s) => tint(4));
+        i++;
+        event
+            .create(`cpd${i}_${id}`)
+            .displayName(`${CU_LIST[i]}倍圧縮${name}`)
+            .tooltip(`Tier: ${i} (${TIER_LIST[i]})`)
+            .texture(mod + ":item/" + id)
+            .color((s) => tint(5));
+        i++;
+        event
+            .create(`cpd${i}_${id}`)
+            .displayName(`${CU_LIST[i]}倍圧縮${name}`)
+            .tooltip(`Tier: ${i} (${TIER_LIST[i]})`)
+            .texture(mod + ":item/" + id)
+            .color((s) => tint(6));
+        i++;
+        event
+            .create(`cpd${i}_${id}`)
+            .displayName(`${CU_LIST[i]}倍圧縮${name}`)
+            .tooltip(`Tier: ${i} (${TIER_LIST[i]})`)
+            .texture(mod + ":item/" + id)
+            .color((s) => tint(7));
+        i++;
+        event
+            .create(`cpd${i}_${id}`)
+            .displayName(`${CU_LIST[i]}倍圧縮${name}`)
+            .tooltip(`Tier: ${i} (${TIER_LIST[i]})`)
+            .texture(mod + ":item/" + id)
+            .color((s) => tint(8));
+        i++;
+        event
+            .create(`cpd${i}_${id}`)
+            .displayName(`${CU_LIST[i]}倍圧縮${name}`)
+            .tooltip(`Tier: ${i} (${TIER_LIST[i]})`)
+            .texture(mod + ":item/" + id)
+            .color((s) => tint(9));
+    }
+
+    mProc("golden_carrot", "金のニンジン", 21);
+    mProc("golden_apple", "金のリンゴ", 13);
+    mProc("enchanted_golden_apple", "エンチャントされた金のリンゴ", 13);
+    mProc("cooked_beef", "ステーキ", 21);
+    mProc("cooked_porkchop", "焼き豚", 21);
+    mProc("cooked_mutton", "焼き羊肉", 15);
+    mProc("cooked_salmon", "焼き鮭", 15);
+    mProc("cooked_chicken", "焼き鳥", 13);
+    mProc("cooked_rabbit", "焼き兎肉", 11);
+    mProc("rabbit_stew", "ウサギシチュー", 22);
+    pNoCU("brown_mushroom", "minecraft", "茶色のキノコ");
+    pNoCU("red_mushroom", "minecraft", "赤色のキノコ");
+    mProc("mushroom_stew", "キノコシチュー", 13);
+    mProc("bread", "パン", 11);
+    pNoCU("wheat", "minecraft", "小麦");
+    mProc("cooked_cod", "焼き鱈", 11);
+    mProc("carrot", "ニンジン", 6);
+    mProc("baked_potato", "ベイクドポテト", 11);
+    mProc("beetroot", "ビートルート", 2);
+    mProc("beetroot_soup", "ビートルートスープ", 13);
+    mProc("dried_kelp", "乾燥した昆布", 2);
+    pNoCU("kelp", "minecraft", "昆布");
+    mProc("pumpkin_pie", "パンプキンパイ", 13);
+    pNoCU("sugar", "minecraft", "砂糖");
+    mProc("apple", "リンゴ", 7);
+    mProc("beef", "生の牛肉", 4);
+    mProc("porkchop", "生の豚肉", 4);
+    mProc("mutton", "生の羊肉", 3);
+    mProc("chicken", "生の鳥肉", 3);
+    mProc("rabbit", "生の兎肉", 4);
+    mProc("potato", "ジャガイモ", 2);
+    mProc("chorus_fruit", "コーラスフルーツ", 7);
+    mProc("cake", "ケーキ", 17);
+    mProc("cookie", "クッキー", 3);
+    pNoCU("cocoa_beans", "minecraft", "カカオ豆")
+    mProc("honey_bottle", "ハチミツ入りビン", 7);
+    mProc("sweet_berries", "スイートベリー", 3);
+    mProc("glow_berries", "グロウベリー", 3);
+    mProc("cod", "生鱈", 3);
+    mProc("tropical_fish", "熱帯魚", 2);
+    mProc("salmon", "生鮭", 3);
+    fProc("cabbage", "キャベツ", 3);
+    fProc("tomato", "トマト", 2);
+    fProc("onion", "タマネギ", 3);
+    fProc("fried_egg", "目玉焼き", 7);
+    pNoCU("egg", "minecraft", "卵");
+    fProc("tomato_sauce", "トマトソース", 7);
+    fProc("pumpkin_slice", "カボチャの薄切り", 4);
+    fProc("cabbage_leaf", "キャベツの葉", 2);
+    fProc("minced_beef", "牛ひき肉", 2);
+    fProc("beef_patty", "ビーフパティ", 11);
+    fProc("cooked_chicken_cuts", "カットした焼き鳥", 6);
+    fProc("bacon", "生のベーコン", 2);
+    fProc("cooked_bacon", "焼きベーコン", 11);
+    fProc("cod_slice", "鱈の切り身", 2);
+    fProc("cooked_cod_slice", "焼き鱈の切り身", 6);
+    fProc("salmon_slice", "鮭の切り身", 2);
+    fProc("cooked_salmon_slice", "焼き鮭の切り身", 8);
+    fProc("mutton_chops", "生のラムチョップ", 2);
+    fProc("cooked_mutton_chops", "焼きラムチョップ", 8);
+    fProc("ham", "ハム", 8);
+    fProc("smoked_ham", "ハムの燻製", 26);
+    fProc("pie_crust", "パイ生地", 3);
+    fProc("cake_slice", "カットケーキ", 3);
+    fProc("apple_pie_slice", "切り分けたアップルパイ", 4);
+    fProc(
         "sweet_berry_cheesecake_slice",
         "切り分けたスイートベリーチーズケーキ",
         4
     );
-    proc("chocolate_pie_slice", "切り分けたチョコレートパイ", 4);
-    proc("sweet_berry_cookie", "スイートベリークッキー", 3);
-    proc("honey_cookie", "ハチミツクッキー", 3);
-    proc("melon_popsicle", "スイカバー", 4);
-    proc("glow_berry_custard", "グロウベリーカスタード", 16);
-    proc("fruit_salad", "フルーツサラダ", 13);
-    proc("mixed_salad", "ミックスサラダ", 13);
-    proc("barbecue_stick", "串焼き", 23);
-    proc("egg_sandwich", "たまごサンド", 21);
-    proc("chicken_sandwich", "チキンサンド", 26);
-    proc("hamburger", "ハンバーガー", 28);
-    proc("bacon_sandwich", "ベーコンサンド", 26);
-    proc("mutton_wrap", "マトンラップ", 26);
-    proc("dumplings", "ダンプリング", 21);
-    proc("stuffed_potato", "スタッフドポテト", 24);
-    proc("cabbage_rolls", "ロールキャベツ", 10);
-    proc("salmon_roll", "サーモンの握り寿司", 16);
-    proc("cod_roll", "タラの握り寿司", 16);
-    proc("kelp_roll", "巻き寿司", 27);
-    proc("kelp_roll_slice", "切り分けた巻き寿司", 12);
-    proc("cooked_rice", "ご飯", 11);
-    proc("bone_broth", "骨の煮汁", 19);
-    proc("beef_stew", "ビーフシチュー", 31);
-    proc("chicken_soup", "チキンスープ", 36);
-    proc("vegetable_soup", "野菜スープ", 31);
-    proc("fish_stew", "魚のシチュー", 31);
-    proc("fried_rice", "チャーハン", 36);
-    proc("pumpkin_soup", "カボチャスープ", 36);
-    proc("baked_cod_stew", "焼き鱈のシチュー", 36);
-    proc("noodle_soup", "ラーメン", 36);
-    proc("bacon_and_eggs", "ベーコンエッグ", 22);
-    proc("pasta_with_meatballs", "ミートボールパスタ", 31);
-    proc("pasta_with_mutton_chop", "マトンパスタ", 31);
-    proc("mushroom_rice", "キノコの炊き込みご飯", 31);
-    proc("roasted_mutton_chops", "ローストマトンチョップ", 36);
-    proc("vegetable_noodles", "ベジタブルヌードル", 36);
-    proc("steak_and_potatoes", "ステーキとポテト", 31);
-    proc("ratatouille", "ラタトゥイユ", 22);
-    proc("squid_ink_pasta", "イカスミパスタ", 36);
-    proc("grilled_salmon", "鮭のムニエル", 36);
-    proc("roast_chicken", "大皿のローストチキン", 36);
-    proc("stuffed_pumpkin", "スタッフドパンプキン入りのボウル", 36);
-    proc("honey_glazed_ham", "大皿のハニーグレイズドハム", 36);
-    proc("shepherds_pie", "大皿のシェパーズパイ", 36);
-    proc("dog_food", "ドッグフード", 5);
-});
-
-onEvent("block.registry", (event) => {
-    // Register new blocks here
-    // event.create('example_block').material('wood').hardness(1.0).displayName('Example Block')
+    fProc("chocolate_pie_slice", "切り分けたチョコレートパイ", 4);
+    fProc("sweet_berry_cookie", "スイートベリークッキー", 3);
+    fProc("honey_cookie", "ハチミツクッキー", 3);
+    fProc("melon_popsicle", "スイカバー", 4);
+    fProc("glow_berry_custard", "グロウベリーカスタード", 16);
+    fProc("fruit_salad", "フルーツサラダ", 13);
+    fProc("mixed_salad", "ミックスサラダ", 13);
+    fProc("barbecue_stick", "串焼き", 23);
+    fProc("egg_sandwich", "たまごサンド", 21);
+    fProc("chicken_sandwich", "チキンサンド", 26);
+    fProc("hamburger", "ハンバーガー", 28);
+    fProc("bacon_sandwich", "ベーコンサンド", 26);
+    fProc("mutton_wrap", "マトンラップ", 26);
+    fProc("dumplings", "ダンプリング", 21);
+    fProc("stuffed_potato", "スタッフドポテト", 24);
+    fProc("cabbage_rolls", "ロールキャベツ", 10);
+    fProc("salmon_roll", "サーモンの握り寿司", 16);
+    fProc("cod_roll", "タラの握り寿司", 16);
+    fProc("kelp_roll", "巻き寿司", 27);
+    fProc("kelp_roll_slice", "切り分けた巻き寿司", 12);
+    fProc("cooked_rice", "ご飯", 11);
+    fProc("bone_broth", "骨の煮汁", 19);
+    fProc("beef_stew", "ビーフシチュー", 31);
+    fProc("chicken_soup", "チキンスープ", 36);
+    fProc("vegetable_soup", "野菜スープ", 31);
+    fProc("fish_stew", "魚のシチュー", 31);
+    fProc("fried_rice", "チャーハン", 36);
+    fProc("pumpkin_soup", "カボチャスープ", 36);
+    fProc("baked_cod_stew", "焼き鱈のシチュー", 36);
+    fProc("noodle_soup", "ラーメン", 36);
+    fProc("bacon_and_eggs", "ベーコンエッグ", 22);
+    fProc("pasta_with_meatballs", "ミートボールパスタ", 31);
+    fProc("pasta_with_mutton_chop", "マトンパスタ", 31);
+    fProc("mushroom_rice", "キノコの炊き込みご飯", 31);
+    fProc("roasted_mutton_chops", "ローストマトンチョップ", 36);
+    fProc("vegetable_noodles", "ベジタブルヌードル", 36);
+    fProc("steak_and_potatoes", "ステーキとポテト", 31);
+    fProc("ratatouille", "ラタトゥイユ", 22);
+    fProc("squid_ink_pasta", "イカスミパスタ", 36);
+    fProc("grilled_salmon", "鮭のムニエル", 36);
+    fProc("roast_chicken", "大皿のローストチキン", 36);
+    fProc("stuffed_pumpkin", "スタッフドパンプキン入りのボウル", 36);
+    fProc("honey_glazed_ham", "大皿のハニーグレイズドハム", 36);
+    fProc("shepherds_pie", "大皿のシェパーズパイ", 36);
+    fProc("dog_food", "ドッグフード", 5);
 });
