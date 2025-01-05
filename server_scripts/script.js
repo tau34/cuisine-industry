@@ -1,6 +1,6 @@
 // priority: 0
 
-settings.logAddedRecipes = true;
+settings.logAddedRecipes = false;
 settings.logRemovedRecipes = true;
 settings.logSkippedRecipes = false;
 settings.logErroringRecipes = true;
@@ -107,7 +107,7 @@ onEvent("recipes", (event) => {
         }
     }
 
-    function pot(ins, ctr, out) {
+    function potC(ins, ctr, out) {
         for (var i = 1; i <= 9; i ++) {
             ins.map(item => ({item: `kubejs:cpd${i}_${item}`}));
             event.custom({
@@ -182,9 +182,33 @@ onEvent("recipes", (event) => {
     mProc("cooked_rabbit", 11);
     cook("rabbit", "cooked_rabbit");
     mProc("rabbit_stew", 22);
-    //未実装
+    for (var i = 1; i <= 9; i ++) {
+        event.shapeless(Item.of(`kubejs:cpd${i}_rabbit_stew`, 1), [
+            `kubejs:cpd${i}_cooked_rabbit`,
+            `kubejs:cpd${i}_carrot`,
+            `kubejs:cpd${i}_baked_potato`,
+            `kubejs:cpd${i}_red_mushroom`,
+            `kubejs:cpd${i}_bowl`
+        ]);
+        event.shapeless(Item.of(`kubejs:cpd${i}_rabbit_stew`, 1), [
+            `kubejs:cpd${i}_cooked_rabbit`,
+            `kubejs:cpd${i}_carrot`,
+            `kubejs:cpd${i}_baked_potato`,
+            `kubejs:cpd${i}_brown_mushroom`,
+            `kubejs:cpd${i}_bowl`
+        ]);
+    }
+    potC(["baked_potato", "rabbit", "carrot", "red_mushroom"], "bowl", "rabbit_stew");
+    potC(["baked_potato", "rabbit", "carrot", "brown_mushroom"], "bowl", "rabbit_stew");
     mProc("mushroom_stew", 13);
-    //未実装
+    for (var i = 1; i <= 9; i ++) {
+        event.shapeless(Item.of(`kubejs:cpd${i}_mushroom_stew`, 1), [
+            `kubejs:cpd${i}_red_mushroom`,
+            `kubejs:cpd${i}_brown_mushroom`,
+            `kubejs:cpd${i}_bowl`
+        ]);
+    }
+    potC(["brown_mushroom", "red_mushroom"], "bowl", "mushroom_stew");
     mProc("bread", 11);
     for (var i = 1; i <= 9; i ++) {
         event.shaped(
@@ -209,6 +233,7 @@ onEvent("recipes", (event) => {
     cook("kelp", "dried_kelp");
     pNoCU("kelp", "minecraft")
     mProc("pumpkin_pie", 13);
+    pNoCU("sugar", "minecraft");
     mProc("apple", 7);
     mProc("beef", 4);
     mProc("porkchop", 4);
@@ -216,8 +241,6 @@ onEvent("recipes", (event) => {
     mProc("rabbit", 4);
     mProc("potato", 2);
     mProc("chorus_fruit", 7);
-    mProc("cake", 17);
-    //未実装
     mProc("cookie", 3);
     for (var i = 1; i <= 9; i ++) {
         event.shaped(
@@ -231,6 +254,7 @@ onEvent("recipes", (event) => {
             }
         );
     }
+    pNoCU("cocoa_beans", "minecraft")
     mProc("honey_bottle", 7);
     mProc("sweet_berries", 3);
     mProc("glow_berries", 3);

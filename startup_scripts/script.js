@@ -316,6 +316,73 @@ onEvent("item.registry", (event) => {
             .color((s) => tint(9));
     }
 
+    function mr(id, name) {
+        var i = 1;
+        event
+            .create(`cpd${i}_${id}`)
+            .displayName(`${CU_LIST[i]}倍圧縮${name}`)
+            .tooltip(`Tier: ${i} (${TIER_LIST[i]})`)
+            .texture("minecraft:block/" + id)
+            .color((s) => tint(1));
+        i++;
+        event
+            .create(`cpd${i}_${id}`)
+            .displayName(`${CU_LIST[i]}倍圧縮${name}`)
+            .tooltip(`Tier: ${i} (${TIER_LIST[i]})`)
+            .texture("minecraft:block/" + id)
+            .color((s) => tint(2));
+        i++;
+        event
+            .create(`cpd${i}_${id}`)
+            .displayName(`${CU_LIST[i]}倍圧縮${name}`)
+            .tooltip(`Tier: ${i} (${TIER_LIST[i]})`)
+            .texture("minecraft:block/" + id)
+            .color((s) => tint(3));
+        i++;
+        event
+            .create(`cpd${i}_${id}`)
+            .displayName(`${CU_LIST[i]}倍圧縮${name}`)
+            .tooltip(`Tier: ${i} (${TIER_LIST[i]})`)
+            .texture("minecraft:block/" + id)
+            .color((s) => tint(4));
+        i++;
+        event
+            .create(`cpd${i}_${id}`)
+            .displayName(`${CU_LIST[i]}倍圧縮${name}`)
+            .tooltip(`Tier: ${i} (${TIER_LIST[i]})`)
+            .texture("minecraft:block/" + id)
+            .color((s) => tint(5));
+        i++;
+        event
+            .create(`cpd${i}_${id}`)
+            .displayName(`${CU_LIST[i]}倍圧縮${name}`)
+            .tooltip(`Tier: ${i} (${TIER_LIST[i]})`)
+            .texture("minecraft:block/" + id)
+            .color((s) => tint(6));
+        i++;
+        event
+            .create(`cpd${i}_${id}`)
+            .displayName(`${CU_LIST[i]}倍圧縮${name}`)
+            .tooltip(`Tier: ${i} (${TIER_LIST[i]})`)
+            .texture("minecraft:block/" + id)
+            .color((s) => tint(7));
+        i++;
+        event
+            .create(`cpd${i}_${id}`)
+            .displayName(`${CU_LIST[i]}倍圧縮${name}`)
+            .tooltip(`Tier: ${i} (${TIER_LIST[i]})`)
+            .texture("minecraft:block/" + id)
+            .color((s) => tint(8));
+        i++;
+        event
+            .create(`cpd${i}_${id}`)
+            .displayName(`${CU_LIST[i]}倍圧縮${name}`)
+            .tooltip(`Tier: ${i} (${TIER_LIST[i]})`)
+            .texture("minecraft:block/" + id)
+            .color((s) => tint(9));
+    }
+
+    pNoCU("bowl", "minecraft", "ボウル");
     mProc("golden_carrot", "金のニンジン", 21);
     mProc("golden_apple", "金のリンゴ", 13);
     mProc("enchanted_golden_apple", "エンチャントされた金のリンゴ", 13);
@@ -326,8 +393,8 @@ onEvent("item.registry", (event) => {
     mProc("cooked_chicken", "焼き鳥", 13);
     mProc("cooked_rabbit", "焼き兎肉", 11);
     mProc("rabbit_stew", "ウサギシチュー", 22);
-    pNoCU("brown_mushroom", "minecraft", "茶色のキノコ");
-    pNoCU("red_mushroom", "minecraft", "赤色のキノコ");
+    mr("brown_mushroom", "minecraft", "茶色のキノコ");
+    mr("red_mushroom", "minecraft", "赤色のキノコ");
     mProc("mushroom_stew", "キノコシチュー", 13);
     mProc("bread", "パン", 11);
     pNoCU("wheat", "minecraft", "小麦");
@@ -348,7 +415,6 @@ onEvent("item.registry", (event) => {
     mProc("rabbit", "生の兎肉", 4);
     mProc("potato", "ジャガイモ", 2);
     mProc("chorus_fruit", "コーラスフルーツ", 7);
-    mProc("cake", "ケーキ", 17);
     mProc("cookie", "クッキー", 3);
     pNoCU("cocoa_beans", "minecraft", "カカオ豆")
     mProc("honey_bottle", "ハチミツ入りビン", 7);
