@@ -393,8 +393,8 @@ onEvent("item.registry", (event) => {
     mProc("cooked_chicken", "焼き鳥", 13);
     mProc("cooked_rabbit", "焼き兎肉", 11);
     mProc("rabbit_stew", "ウサギシチュー", 22);
-    mr("brown_mushroom", "minecraft", "茶色のキノコ");
-    mr("red_mushroom", "minecraft", "赤色のキノコ");
+    mr("brown_mushroom", "茶色のキノコ");
+    mr("red_mushroom", "赤色のキノコ");
     mProc("mushroom_stew", "キノコシチュー", 13);
     mProc("bread", "パン", 11);
     pNoCU("wheat", "minecraft", "小麦");
